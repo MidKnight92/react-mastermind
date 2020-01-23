@@ -5,15 +5,20 @@ import GameTimer from './components/GameTimer/GameTimer'
 import NewGameButton from './components/NewGameButton/NewGameButton'
 import './App.css';
 
+
 class App extends Component {
-  render(){
-     return (
+  render() {
+    return (
       <div className="App">
-        <header className="App-header">React MasterMind</header>
-        <GameBoard />
-        <ColorPicker />
-        <GameTimer />
-        <NewGameButton />
+        <header className="App-header">React Mastermind</header>
+        <div className="flex-h">
+          <GameBoard />
+          <div>
+            <ColorPicker />
+            <GameTimer />
+            <NewGameButton />
+          </div>
+        </div>
         <footer className="component">footer</footer>
       </div>
     );
