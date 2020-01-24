@@ -2,10 +2,10 @@ import React from 'react';
 import GuessRow from '../GuessRow/GuessRow';
 
 const GameBoard = props => (
-	<div className="component">
+	<div>
 		GameBoard
-		<GuessRow className="component" />
-		<GuessRow className="component" />
+		<GuessRow />
+		<GuessRow />
 	</div>
 );
 
