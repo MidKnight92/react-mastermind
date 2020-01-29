@@ -1,9 +1,9 @@
 import React from 'react';
 
 const NewGameButton = props => (
-	<div>
+	<button className="btn btn-default">
 		NewGameButton
-	</div>
+	</button>
 )
 
 export default NewGameButton;

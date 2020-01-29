@@ -33,7 +33,13 @@ class App extends Component {
   genCode = () => {
     return new Array(arrEl).fill().map(() => Math.floor(Math.random() * colors.length));
   }
+  getWinTries = () => {
+    // if winner, return num guesses, otherwise 0 (no winner)
+    let lastGuess = this.state.guesses.length - 1;
+    return this.state.guesses[lastGuess].score.perfect === 4 ? lastGuess +1 : 0;
+  }
   render() {
+    let winTries = this.getWinTries();
     return (
       <div className="App">
       <button onClick={() => this.setState((state) => {
@@ -51,7 +57,7 @@ class App extends Component {
             <NewGameButton />
           </div>
         </div>
-          <footer>footer</footer>
+          <footer>{winTries ? `You Won in ${winTries} Guesses!` : `Good Luck!`}</footer>
       </div>
     );
   }
