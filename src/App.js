@@ -15,15 +15,14 @@ class App extends Component {
     super();
     this.state = {
       selColorIdx: 0,
-      guesses: [this.getNewGuess(), this.getNewGuess()],
+      guesses: [this.getNewGuess()],
       code: this.genCode
     };
   }
   getNewGuess = () => {
     return {
       //TODO: Remove comment when done testing
-      // code: [null, null, null, null], 
-      code: [3, 2, 1, 0], //TODO: remove once done testing
+      code: [null, null, null, null],
       score: {
         perfect: 0,
         almost: 0
@@ -38,29 +37,29 @@ class App extends Component {
     let lastGuess = this.state.guesses.length - 1;
     return this.state.guesses[lastGuess].score.perfect === 4 ? lastGuess +1 : 0;
   }
+  handleColorSelection = (colorIdx) => {
+    this.setState({
+      selColorIdx: colorIdx
+    });
+  }
   render() {
     let winTries = this.getWinTries();
     return (
       <div className="App">
-      <button onClick={() => this.setState((state) => {
-        return {
-          selColorIdx: ++state.selColorIdx % 4
-        };
-      })}>Next Color</button>
-        Selected Color: {colors[this.state.selColorIdx]}
-        <header className="App-header">React Mastermind</header>
-        <div className="flex-h">
+        <header className="App-header-footer">R E A C T  &nbsp;&nbsp;&nbsp;  M A S T E R M I N D</header>
+        <div className="flex-h align-flex-end">
           <GameBoard guesses={this.state.guesses} colors={colors}/>
-          <div>
-            <ColorPicker selColorIdx={this.state.selColorIdx} colors={colors}/>
+          <div className='App-controls'>
+            <ColorPicker selColorIdx={this.state.selColorIdx} colors={colors} handleColorSelection={this.handleColorSelection}/>
             <GameTimer />
             <NewGameButton />
           </div>
         </div>
-          <footer>{winTries ? `You Won in ${winTries} Guesses!` : `Good Luck!`}</footer>
+          <footer className='App-header-footer'>{winTries ? `You Won in ${winTries} Guesses!` : `Good Luck!`}</footer>
       </div>
     );
   }
 }
+
 
 export default App;
