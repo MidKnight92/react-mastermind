@@ -42,6 +42,13 @@ class App extends Component {
       selColorIdx: colorIdx
     });
   }
+  handleNewGame = () => {
+    this.setState({
+      selColorIdx: 0,
+      guesses: [this.getNewGuess()],
+      code: this.genCode
+    });
+  }
   render() {
     let winTries = this.getWinTries();
     return (
@@ -52,7 +59,7 @@ class App extends Component {
           <div className='App-controls'>
             <ColorPicker selColorIdx={this.state.selColorIdx} colors={colors} handleColorSelection={this.handleColorSelection}/>
             <GameTimer />
-            <NewGameButton />
+            <NewGameButton handleNewGame={this.handleNewGame}/>
           </div>
         </div>
           <footer className='App-header-footer'>{winTries ? `You Won in ${winTries} Guesses!` : `Good Luck!`}</footer>
